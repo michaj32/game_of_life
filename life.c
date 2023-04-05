@@ -3,14 +3,9 @@
 #include <unistd.h>
 #include <omp.h>
 
-#define for_x for (int x = 0; x < w; x++)
-#define for_y for (int y = 0; y < h; y++)
-#define for_xy for_x for_y
 void show(void *u, int w, int h)
 {
 	int (*world)[w] = u;
-	// printf("\033[%dn", w);
-	// printf("\033[%dt", h);
 	printf("\e[1;1H\e[2J");
 	printf("\033[H");
 	for (int y = 0; y < h; y++) {
