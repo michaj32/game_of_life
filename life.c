@@ -73,9 +73,9 @@ void life(int w, int h, char* file_input)
 
     }
 	for (int i = 0; i < 1000; i++) {
-		// show(world, w, h);
+		show(world, w, h);
 		evolve(world, w, h);
-		// usleep(20000);
+		usleep(20000);
 	}
 }
 
@@ -89,18 +89,18 @@ int main(int c, char **v)
 	if (c > 3) file_input = v[3];
 	if (w <= 0) w = 30;
 	if (h <= 0) h = 30;
-	// life(w, h, file_input);
-	FILE *output;
-	output = fopen("time_measure.txt", "w");
-	fprintf(output, "[");
-	for(int i=1; i<=12; i++){
-		omp_set_num_threads(i);
-		double t1 = omp_get_wtime();
-		life(w,h,file_input);
-		double t2 = omp_get_wtime();
-		fprintf(output, "[%d, %f],\n", i, t2-t1);
-		printf("%d %f\n", i, t2-t1);
-	}
-	fprintf(output, "]");
-	fclose(output);
+	life(w, h, file_input);
+	// FILE *output;
+	// output = fopen("time_measure.txt", "w");
+	// fprintf(output, "[");
+	// for(int i=1; i<=12; i++){
+	// 	omp_set_num_threads(i);
+	// 	double t1 = omp_get_wtime();
+	// 	life(w,h,file_input);
+	// 	double t2 = omp_get_wtime();
+	// 	fprintf(output, "[%d, %f],\n", i, t2-t1);
+	// 	printf("%d %f\n", i, t2-t1);
+	// }
+	// fprintf(output, "]");
+	// fclose(output);
 }
